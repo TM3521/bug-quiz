@@ -51,13 +51,13 @@ export const BUG_QUESTIONS = [
   },
   {
     id: 6, title: "フラグ初期値の誤り",
-    description: "入力が空かどうかを確認するプログラムです。何か入力すると「空入力: False」と表示されるはずですが、実際は「空入力: True」になります。",
+    description: "配列の中に特定の値が存在するかを検索するプログラムです。",
     bugLine: 1,
-    bugDescription: "1行目: `isEmpty = True` → `isEmpty = False`（非空が初期状態なのに True で初期化している）",
-    explanation: "isEmpty を True で初期化すると、非空の入力では If ブロックが実行されず isEmpty は True のまま、つまり「空」と誤判定されます。「まだ確認していない」状態のデフォルトは「空ではない」= False で初期化すべきです。",
-    hint: "初期値 True のまま If ブロックに入らなかった場合、何が出力されますか？",
+    bugDescription: "1行目: `found = True` → `found = False`（未発見が初期状態なので False で初期化すべき）",
+    explanation: "target の値 7 は配列 {3, 5, 9, 2} に存在しないため、For Each ループ内の If ブロックは一度も実行されません。found が True で初期化されているため、発見できていないのに「発見: True」と出力されます。初期値は「まだ見つかっていない」= False にすべきです。",
+    hint: "target の値は配列の中に存在しますか？",
     difficulty: "EASY",
-    lines: ["Dim isEmpty As Boolean = True","Dim input As String = Console.ReadLine()","","If input = \"\" Then","    isEmpty = True","End If","","Console.WriteLine(\"空入力: \" & isEmpty)"],
+    lines: ["Dim found As Boolean = True","Dim target As Integer = 7","Dim nums() As Integer = {3, 5, 9, 2}","","For Each n In nums","    If n = target Then","        found = True","    End If","Next","","Console.WriteLine(\"発見: \" & found)"],
   },
   {
     id: 7, title: "再帰の終了条件",

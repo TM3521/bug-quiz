@@ -1,7 +1,11 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.10", date: "2026-05-14", tag: "LATEST", tagColor: "#00ff88",
-    changes: [{ type: "FIX", text: "問題ID6「フラグ初期値の誤り」を再設計：コードに実際のバグがなく説明も誤りだったため、isEmpty=Trueで非空入力を誤判定するバグに修正" }],
+    version: "v4.11", date: "2026-05-14", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "問題ID6「フラグ初期値の誤り」を再設計：配列検索シナリオに変更し、答えが透けない問題文・矛盾のないコードに修正" }],
+  },
+  {
+    version: "v4.10", date: "2026-05-14", tag: "", tagColor: "",
+    changes: [{ type: "FIX", text: "問題ID6「フラグ初期値の誤り」を再設計（isEmpty版）：コードに実際のバグがなく説明も誤りだったため修正（さらに改善の余地あり）" }],
   },
   {
     version: "v4.9", date: "2026-05-14", tag: "", tagColor: "",
