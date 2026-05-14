@@ -1,11 +1,12 @@
 import { BUG_QUESTIONS }  from "../data/bugQuestions";
 import { SMELL_QUESTIONS } from "../data/smellQuestions";
-import { releaseNotes }    from "../data/releaseNotes";
+import { bugReleaseNotes, smellReleaseNotes } from "../data/releaseNotes";
 import { BUG_PER_SESSION, SMELL_PER_SESSION, difficultyColor, changeTypeStyle } from "../constants/theme";
 
 export default function TitleScreen({ blink, th, titleTab, setTitleTab, setScreen, isBugMode, isSmellMode, maxScore }) {
   const G  = th.accent;
   const GD = th.accentDim;
+  const notes = isBugMode ? bugReleaseNotes : smellReleaseNotes;
 
   const infoItems = isBugMode ? [
     { label: "QUESTION POOL", value: `${BUG_QUESTIONS.length} 問` },
@@ -119,7 +120,7 @@ export default function TitleScreen({ blink, th, titleTab, setTitleTab, setScree
       {/* RELEASE NOTES tab */}
       {titleTab === "notes" && (
         <div className="notes-scroll" style={{ maxHeight: "360px", overflowY: "auto", paddingRight: "6px" }}>
-          {releaseNotes.map((rel, ri) => (
+          {notes.map((rel, ri) => (
             <div key={ri}>
               <div style={{ borderLeft: `2px solid ${ri === 0 ? "#00ff55" : "#1a4a1a"}`, paddingLeft: "16px", paddingBottom: "18px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px", flexWrap: "wrap" }}>
@@ -145,7 +146,7 @@ export default function TitleScreen({ blink, th, titleTab, setTitleTab, setScree
                   })}
                 </div>
               </div>
-              {ri < releaseNotes.length - 1 && (
+              {ri < notes.length - 1 && (
                 <div style={{ borderBottom: "1px dashed #0d2a0d", marginBottom: "18px", marginLeft: "18px" }} />
               )}
             </div>
