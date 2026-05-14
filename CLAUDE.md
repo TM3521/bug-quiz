@@ -91,6 +91,7 @@ BUG HUNT は緑系（`#00ff55`）、REFACTORING は黄橙系（`#ffaa00`）。
 
 - `components/QuizScreen.jsx` の import 文で `SMELL_QUESTIONS` を誤って `bugQuestions.js` から import していたバグを修正。正しくは `smellQuestions.js` から import する。
 - 問題ID9「条件分岐の優先順位」を再設計。3つの条件すべてが逆順で bugLine が曖昧だったため、「同じ条件 `>= 80` が2行連続する（デッドコード）」という形に変更し、bugLine=5 の1行に絞った。
+- スマホ（640px以下）でASCIIアートタイトルが横スクロール（marquee）するよう変更。PCでは従来通り。
 
 ## 開発ルール
 
