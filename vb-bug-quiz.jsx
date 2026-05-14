@@ -172,7 +172,7 @@ export default function App() {
                   borderBottom: mode === m.key ? `2px solid ${m.key === "bug" ? "var(--c-bug-accent)" : "var(--c-smell-accent)"}` : "2px solid transparent",
                   color:        mode === m.key ? (m.key === "bug" ? "var(--c-bug-accent)" : "var(--c-smell-accent)") : "var(--c-mode-inactive)",
                   padding: "10px 16px", fontSize: "12px", letterSpacing: "0.2em",
-                  cursor: "pointer", marginBottom: "-1px", transition: "all 0.2s",
+                  cursor: "pointer", marginBottom: "-1px", transition: "all 0.2s", whiteSpace: "nowrap",
                   textShadow: mode === m.key ? `0 0 10px ${m.key === "bug" ? "var(--c-bug-glow)" : "var(--c-smell-glow)"}` : "none",
                 }}>
                 <span style={{ marginRight: "8px" }}>{m.icon}</span>{m.label}

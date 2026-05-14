@@ -1,6 +1,10 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.16", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.17", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "スマホ表示でモード切り替えボタン「BUG HUNT バグを探せ」が途中改行されていた問題を修正（white-space: nowrap を追加）" }],
+  },
+  {
+    version: "v4.16", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "IMP", text: "カラー管理を CSS Custom Properties に一元化：全コンポーネントのインライン色指定を CSS 変数（var(--c-*)）に置き換え。GlobalStyles.jsx の :root ブロックと App ルート要素のインライン変数注入のみを編集すれば全体の配色が変わる保守性に改善" }],
   },
   {
@@ -97,7 +101,11 @@ export const bugReleaseNotes = [
 
 export const smellReleaseNotes = [
   {
-    version: "v4.8", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.9", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "スマホ表示でモード切り替えボタン「REFACTORING 改善点を見つけろ」が途中改行されていた問題を修正（white-space: nowrap を追加）" }],
+  },
+  {
+    version: "v4.8", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "IMP", text: "カラー管理を CSS Custom Properties に一元化：全コンポーネントのインライン色指定を CSS 変数（var(--c-*)）に置き換え。GlobalStyles.jsx の :root ブロックと App ルート要素のインライン変数注入のみを編集すれば全体の配色が変わる保守性に改善" }],
   },
   {
