@@ -1,6 +1,10 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.11", date: "2026-05-14", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.12", date: "2026-05-14", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "問題ID8「整数除算の誤差」のコードを修正：`a \\ b`（a÷b）から `(a + b) \\ 2`（平均計算）に変更し、問題文・期待値・解説を整合させた" }],
+  },
+  {
+    version: "v4.11", date: "2026-05-14", tag: "", tagColor: "",
     changes: [{ type: "FIX", text: "問題ID6「フラグ初期値の誤り」を再設計：配列検索シナリオに変更し、答えが透けない問題文・矛盾のないコードに修正" }],
   },
   {

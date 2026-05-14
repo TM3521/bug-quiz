@@ -71,13 +71,13 @@ export const BUG_QUESTIONS = [
   },
   {
     id: 8, title: "整数除算の誤差",
-    description: "二つの数の平均を計算するプログラムです。期待値は 3.5 です。",
+    description: "二つの数の平均を計算するプログラムです。期待値は 4.5 です。",
     bugLine: 5,
-    bugDescription: "5行目: `a \\ b` → `a / b`（`\\` は整数除算のため小数が切り捨てられる）",
-    explanation: "VB.NET の `\\` は整数除算演算子で `7 \\ 2 = 3` と小数部が切り捨てられます。avg が Double 型でも、代入される値はすでに Integer の 3 です。浮動小数点除算には `/`（スラッシュ）を使います。",
+    bugDescription: "5行目: `(a + b) \\ 2` → `(a + b) / 2`（`\\` は整数除算のため小数が切り捨てられる）",
+    explanation: "VB.NET の `\\` は整数除算演算子で `(7 + 2) \\ 2 = 9 \\ 2 = 4` と小数部が切り捨てられます。avg が Double 型でも、代入される値はすでに Integer の 4 です。浮動小数点除算には `/`（スラッシュ）を使い、`(7 + 2) / 2 = 4.5` が正しく得られます。",
     hint: "/ と \\ は別の演算子です。それぞれ何除算ですか？",
     difficulty: "NORMAL",
-    lines: ["Dim a As Integer = 7","Dim b As Integer = 2","Dim avg As Double","","avg = a \\ b","Console.WriteLine(\"平均: \" & avg)"],
+    lines: ["Dim a As Integer = 7","Dim b As Integer = 2","Dim avg As Double","","avg = (a + b) \\ 2","Console.WriteLine(\"平均: \" & avg)"],
   },
   {
     id: 9, title: "条件分岐の優先順位",
