@@ -14,11 +14,11 @@ export default function GlobalStyles() {
       .line-row { transition:background 0.1s; }
       .hint-btn:hover { opacity:0.8; }
       @keyframes marquee-x {
-        from { transform: translateX(110vw); }
-        to   { transform: translateX(-110vw); }
+        from { transform: translateX(100%); }
+        to   { transform: translateX(-100%); }
       }
       .ascii-outer { overflow: hidden; text-align: center; }
-      .ascii-inner { display: inline-block; animation: marquee-x 15s linear infinite; }
+      .ascii-inner { display: inline-block; animation: marquee-x 15s linear -7.5s infinite; }
       @keyframes verdict-in {
         0%  { opacity:0; transform:scale(0.7) translateY(-8px); }
         60% { transform:scale(1.06) translateY(2px); }
