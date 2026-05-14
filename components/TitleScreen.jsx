@@ -200,15 +200,15 @@ export default function TitleScreen({ blink, th, titleTab, setTitleTab, setScree
         <div className="notes-scroll" style={{ maxHeight: "360px", overflowY: "auto", paddingRight: "6px" }}>
           {notes.map((rel, ri) => (
             <div key={ri}>
-              <div style={{ borderLeft: `2px solid ${ri === 0 ? "#00ff55" : "#1a4a1a"}`, paddingLeft: "16px", paddingBottom: "18px" }}>
+              <div style={{ borderLeft: `2px solid ${ri === 0 ? "#00ff55" : "#2a6a2a"}`, paddingLeft: "16px", paddingBottom: "18px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px", flexWrap: "wrap" }}>
-                  <span style={{ color: ri === 0 ? "#00ff88" : "#008833", fontSize: "15px", letterSpacing: "0.1em",
+                  <span style={{ color: ri === 0 ? "#00ff88" : "#00bb44", fontSize: "15px", letterSpacing: "0.1em",
                     textShadow: ri === 0 ? "0 0 12px rgba(0,255,136,0.4)" : "none" }}>{rel.version}</span>
                   {rel.tag && (
                     <span style={{ color: rel.tagColor, border: `1px solid ${rel.tagColor}`,
                       fontSize: "9px", padding: "1px 7px", letterSpacing: "0.15em" }}>{rel.tag}</span>
                   )}
-                  <span style={{ color: "#1a4a1a", fontSize: "10px", marginLeft: "auto" }}>{rel.date}</span>
+                  <span style={{ color: "#4a8a4a", fontSize: "10px", marginLeft: "auto" }}>{rel.date}</span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                   {rel.changes.map((ch, ci) => {
@@ -218,14 +218,14 @@ export default function TitleScreen({ blink, th, titleTab, setTitleTab, setScree
                         <span style={{ color: st.color, border: st.border, background: st.bg,
                           fontSize: "9px", padding: "1px 6px", letterSpacing: "0.1em",
                           whiteSpace: "nowrap", flexShrink: 0 }}>{ch.type}</span>
-                        <span style={{ color: "#007733", fontSize: "12px", lineHeight: "1.5" }}>{ch.text}</span>
+                        <span style={{ color: "#00aa44", fontSize: "12px", lineHeight: "1.5" }}>{ch.text}</span>
                       </div>
                     );
                   })}
                 </div>
               </div>
               {ri < notes.length - 1 && (
-                <div style={{ borderBottom: "1px dashed #0d2a0d", marginBottom: "18px", marginLeft: "18px" }} />
+                <div style={{ borderBottom: "1px dashed #1a3a1a", marginBottom: "18px", marginLeft: "18px" }} />
               )}
             </div>
           ))}

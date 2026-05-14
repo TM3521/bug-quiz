@@ -10,14 +10,14 @@ export const difficultyColor = {
 export const MODE_THEME = {
   bug: {
     accent:    "#00ff55",
-    accentDim: "#1a4a1a",
+    accentDim: "#4a8a4a",
     accentBg:  "rgba(0,255,80,0.07)",
     label:     "BUG HUNT",
     sub:       "バグを見つけろ",
   },
   smell: {
     accent:    "#ffaa00",
-    accentDim: "#4a3a00",
+    accentDim: "#997700",
     accentBg:  "rgba(255,170,0,0.07)",
     label:     "REFACTORING",
     sub:       "改善点を見つけろ",

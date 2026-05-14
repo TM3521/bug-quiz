@@ -1,6 +1,10 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.14", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.15", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "UI 全体のコントラスト改善：accentDim カラーを #1a4a1a → #4a8a4a に変更（コントラスト比 1.75:1 → 4.37:1）。リリースノート・説明文・行番号など暗すぎたテキストを読みやすく修正" }],
+  },
+  {
+    version: "v4.14", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "NEW", text: "BUG HUNT 問題を 20問 → 30問に増加（EASY +3 / NORMAL +4 / HARD +3）。追加カテゴリ：ループ制御・配列・文字列操作・条件分岐・型演算子の VB.NET 固有バグ" }],
   },
   {
@@ -89,7 +93,11 @@ export const bugReleaseNotes = [
 
 export const smellReleaseNotes = [
   {
-    version: "v4.6", date: "2026-05-14", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.7", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "FIX", text: "UI 全体のコントラスト改善：accentDim カラーを #4a3a00 → #997700 に変更（コントラスト比 1.75:1 → 4.37:1）。タブ・ラベル・説明文など暗すぎたテキストを読みやすく修正" }],
+  },
+  {
+    version: "v4.6", date: "2026-05-14", tag: "", tagColor: "",
     changes: [{ type: "IMP", text: "リリースノートを指示ごとの1エントリ形式に変更" }],
   },
   {

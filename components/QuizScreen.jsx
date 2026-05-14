@@ -84,7 +84,7 @@ export default function QuizScreen({
       </div>
 
       {/* Description */}
-      <div style={{ color: "#007733", fontSize: "12px", marginBottom: "14px",
+      <div style={{ color: GD, fontSize: "12px", marginBottom: "14px",
         borderLeft: `2px solid ${GD}`, paddingLeft: "12px" }}>&gt; {q.description}</div>
 
       {!revealed && (
@@ -112,7 +112,7 @@ export default function QuizScreen({
               : isSelected && !revealed ? `3px solid ${G}` : "3px solid transparent";
             const numColor = revealed && isProblem
               ? (isBugMode ? "#ff4466" : "#ffaa00")
-              : isSelected && !revealed ? G : "#1a4a1a";
+              : isSelected && !revealed ? G : GD;
             const codeColor = revealed && isProblem
               ? (isBugMode ? "#ff8899" : "#ffcc66")
               : isSelected && !revealed ? "#ccffee" : "#00aa44";
@@ -186,7 +186,7 @@ export default function QuizScreen({
                     style={{ color: accentC, fontSize: "20px", fontWeight: "bold", letterSpacing: "0.25em" }}>
                     {correct ? "CORRECT!" : "INCORRECT"}
                   </div>
-                  <div style={{ color: correct ? (isBugMode ? "#00aa55" : "#bb7700") : "#cc3355",
+                  <div style={{ color: correct ? (isBugMode ? "#33cc77" : "#ddaa00") : "#ff5577",
                     fontSize: "11px", letterSpacing: "0.15em", marginTop: "2px" }}>
                     {correct
                       ? (isBugMode ? "よく見つけました" : "改善点を見つけました")
@@ -197,16 +197,16 @@ export default function QuizScreen({
               <div style={{ textAlign: "center", border: `1px solid ${borderC}`,
                 padding: "8px 16px", flexShrink: 0, background: accentBgC }}>
                 <div style={{ color: accentC, fontSize: "24px" }}>{correct ? `+${pts}` : "+0"}</div>
-                <div style={{ color: correct ? (isBugMode ? "#007744" : "#885500") : "#883344",
+                <div style={{ color: correct ? (isBugMode ? "#33cc77" : "#ddaa00") : "#ff5577",
                   fontSize: "10px", letterSpacing: "0.2em" }}>pts</div>
               </div>
             </div>
             <div style={{ padding: "14px 20px" }}>
               <div style={{ color: "#00cc44", fontSize: "11.5px", marginBottom: "8px",
-                fontFamily: "monospace", borderLeft: "2px solid #1a6a1a", paddingLeft: "10px" }}>
+                fontFamily: "monospace", borderLeft: "2px solid #336633", paddingLeft: "10px" }}>
                 {isBugMode ? "BUG" : "改善点"}: {isBugMode ? q.bugDescription : q.badDescription}
               </div>
-              <div style={{ color: "#007733", fontSize: "11.5px", lineHeight: "1.75" }}>
+              <div style={{ color: GD, fontSize: "11.5px", lineHeight: "1.75" }}>
                 {q.explanation}
               </div>
             </div>
