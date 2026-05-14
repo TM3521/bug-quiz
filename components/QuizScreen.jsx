@@ -10,9 +10,6 @@ export default function QuizScreen({
   handleSubmit, handleNext, handleLineClick,
   setHintUsed, setShowHint,
 }) {
-  const G  = th.accent;
-  const GD = th.accentDim;
-
   const isSmellBad = (idx) => isSmellMode && q.badLines && q.badLines.includes(idx + 1);
 
   const correct = revealed
@@ -26,17 +23,17 @@ export default function QuizScreen({
   const boxCls     = correct
     ? (isBugMode ? "rbox-c-bug" : "rbox-c-smell")
     : "rbox-w";
-  const accentC    = correct ? G : "#ff4466";
-  const accentBgC  = correct ? th.accentBg : "rgba(255,68,102,0.07)";
+  const accentC    = correct ? "var(--c-accent)" : "var(--c-wrong)";
+  const accentBgC  = correct ? "var(--c-accent-bg)" : "var(--c-wrong-bg)";
   const borderC    = correct
-    ? (isBugMode ? "rgba(0,255,136,0.4)" : "rgba(255,170,0,0.4)")
-    : "rgba(255,68,102,0.4)";
+    ? (isBugMode ? "var(--c-correct-bug-border)" : "var(--c-correct-smell-border)")
+    : "var(--c-wrong-border)";
 
   return (
     <div>
       {/* Progress bar */}
-      <div style={{ height: "2px", background: "#0a1a0a", marginBottom: "20px" }}>
-        <div style={{ height: "100%", background: G, boxShadow: `0 0 8px ${G}99`,
+      <div style={{ height: "2px", background: "var(--c-bg-progress)", marginBottom: "20px" }}>
+        <div style={{ height: "100%", background: "var(--c-accent)", boxShadow: "0 0 8px var(--c-accent-99)",
           transition: "width 0.4s ease, background 0.4s",
           width: `${(currentQ / questions.length) * 100}%` }} />
       </div>
@@ -44,7 +41,7 @@ export default function QuizScreen({
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
         <div>
-          <div style={{ color: GD, fontSize: "11px", letterSpacing: "0.2em" }}>
+          <div style={{ color: "var(--c-dim)", fontSize: "11px", letterSpacing: "0.2em" }}>
             {th.label}  {currentQ + 1} / {questions.length}
             <span style={{ opacity: 0.5, marginLeft: "10px", fontSize: "10px" }}>
               （{isSmellMode ? `${SMELL_QUESTIONS.length}問プール` : `${BUG_QUESTIONS.length}問プール`}よりランダム）
@@ -52,22 +49,22 @@ export default function QuizScreen({
           </div>
 
           {revealed ? (
-            <div style={{ color: G, fontSize: "17px", letterSpacing: "0.08em",
-              textShadow: `0 0 12px ${G}66`, marginTop: "4px" }}>{q.title}</div>
+            <div style={{ color: "var(--c-accent)", fontSize: "17px", letterSpacing: "0.08em",
+              textShadow: "0 0 12px var(--c-accent-66)", marginTop: "4px" }}>{q.title}</div>
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "6px" }}>
-              <div style={{ color: GD, fontSize: "17px", letterSpacing: "0.3em", fontFamily: "monospace" }}>{"? ? ? ? ? ? ? ? ?"}</div>
-              <div style={{ color: GD, fontSize: "10px", letterSpacing: "0.15em",
-                border: `1px solid ${GD}`, padding: "2px 7px", opacity: 0.7 }}>回答後に公開</div>
+              <div style={{ color: "var(--c-dim)", fontSize: "17px", letterSpacing: "0.3em", fontFamily: "monospace" }}>{"? ? ? ? ? ? ? ? ?"}</div>
+              <div style={{ color: "var(--c-dim)", fontSize: "10px", letterSpacing: "0.15em",
+                border: "1px solid var(--c-dim)", padding: "2px 7px", opacity: 0.7 }}>回答後に公開</div>
             </div>
           )}
 
           {isSmellMode ? (
             revealed && (
-              <div style={{ display: "inline-block", color: "#ffaa00",
-                border: "1px solid rgba(255,170,0,0.5)", fontSize: "10px",
+              <div style={{ display: "inline-block", color: "var(--c-smell-accent)",
+                border: "1px solid var(--c-smell-border)", fontSize: "10px",
                 padding: "2px 8px", letterSpacing: "0.15em", marginTop: "6px",
-                textShadow: "0 0 8px rgba(255,170,0,0.5)" }}>{q.category}</div>
+                textShadow: "0 0 8px var(--c-smell-glow)" }}>{q.category}</div>
             )
           ) : (
             <div style={{ display: "inline-block", color: difficultyColor[q.difficulty],
@@ -78,17 +75,17 @@ export default function QuizScreen({
         </div>
 
         <div style={{ textAlign: "right" }}>
-          <div style={{ color: GD, fontSize: "10px", letterSpacing: "0.2em" }}>SCORE</div>
-          <div style={{ color: G, fontSize: "22px", textShadow: `0 0 10px ${G}66` }}>{score}</div>
+          <div style={{ color: "var(--c-dim)", fontSize: "10px", letterSpacing: "0.2em" }}>SCORE</div>
+          <div style={{ color: "var(--c-accent)", fontSize: "22px", textShadow: "0 0 10px var(--c-accent-66)" }}>{score}</div>
         </div>
       </div>
 
       {/* Description */}
-      <div style={{ color: GD, fontSize: "12px", marginBottom: "14px",
-        borderLeft: `2px solid ${GD}`, paddingLeft: "12px" }}>&gt; {q.description}</div>
+      <div style={{ color: "var(--c-dim)", fontSize: "12px", marginBottom: "14px",
+        borderLeft: "2px solid var(--c-dim)", paddingLeft: "12px" }}>&gt; {q.description}</div>
 
       {!revealed && (
-        <div style={{ color: GD, fontSize: "11px", marginBottom: "12px", letterSpacing: "0.15em" }}>
+        <div style={{ color: "var(--c-dim)", fontSize: "11px", marginBottom: "12px", letterSpacing: "0.15em" }}>
           {isSmellMode
             ? "── リファクタリングが必要な行をクリックして選択してください ──"
             : "── バグのある行をクリックして選択してください ──"}
@@ -96,7 +93,7 @@ export default function QuizScreen({
       )}
 
       {/* Code block */}
-      <div className="code-scroll" style={{ background: "#060e06", border: "1px solid #142814",
+      <div className="code-scroll" style={{ background: "var(--c-bg-code)", border: "1px solid var(--c-bg-code-border)",
         borderRadius: "2px", marginBottom: "16px", overflowX: "auto", overflowY: "hidden" }}>
         <div style={{ minWidth: "max-content" }}>
           {q.lines.map((line, idx) => {
@@ -105,17 +102,17 @@ export default function QuizScreen({
             const isSelected = selected === idx;
 
             const rowBg = revealed && isProblem
-              ? (isBugMode ? "rgba(255,68,102,0.15)" : "rgba(255,170,0,0.12)")
-              : isSelected && !revealed ? `${G}14` : "transparent";
+              ? (isBugMode ? "var(--c-code-bg-bug-hl)" : "var(--c-code-bg-smell-hl)")
+              : isSelected && !revealed ? "var(--c-accent-14)" : "transparent";
             const rowBL = revealed && isProblem
-              ? (isBugMode ? "3px solid #ff4466" : "3px solid #ffaa00")
-              : isSelected && !revealed ? `3px solid ${G}` : "3px solid transparent";
+              ? (isBugMode ? "var(--c-code-border-bug-hl)" : "var(--c-code-border-smell-hl)")
+              : isSelected && !revealed ? "3px solid var(--c-accent)" : "3px solid transparent";
             const numColor = revealed && isProblem
-              ? (isBugMode ? "#ff4466" : "#ffaa00")
-              : isSelected && !revealed ? G : GD;
+              ? (isBugMode ? "var(--c-line-bug)" : "var(--c-line-smell)")
+              : isSelected && !revealed ? "var(--c-accent)" : "var(--c-dim)";
             const codeColor = revealed && isProblem
-              ? (isBugMode ? "#ff8899" : "#ffcc66")
-              : isSelected && !revealed ? "#ccffee" : "#00aa44";
+              ? (isBugMode ? "var(--c-code-bug-hl)" : "var(--c-code-smell-hl)")
+              : isSelected && !revealed ? "var(--c-code-sel)" : "var(--c-code)";
 
             return (
               <div key={idx} className={!revealed ? "line-row" : ""} onClick={() => handleLineClick(idx)}
@@ -126,7 +123,7 @@ export default function QuizScreen({
                 <span style={{ color: codeColor, fontSize: "12.5px", padding: "5px 48px 5px 0",
                   whiteSpace: "nowrap", fontFamily: "'Courier New',monospace" }}>{line || " "}</span>
                 {revealed && isProblem && (
-                  <span style={{ color: isBugMode ? "#ff4466" : "#ffaa00", fontSize: "11px",
+                  <span style={{ color: isBugMode ? "var(--c-line-bug)" : "var(--c-line-smell)", fontSize: "11px",
                     padding: "5px 12px 5px 0", flexShrink: 0, whiteSpace: "nowrap" }}>
                     {isBugMode ? "◄ BUG" : "◄ HERE"}
                   </span>
@@ -139,10 +136,10 @@ export default function QuizScreen({
 
       {/* Hint */}
       {showHint && (
-        <div style={{ background: "rgba(255,204,0,0.05)", border: "1px solid rgba(255,204,0,0.25)",
+        <div style={{ background: "var(--c-hint-bg)", border: "1px solid var(--c-hint-border)",
           padding: "12px 16px", marginBottom: "16px" }}>
-          <div style={{ color: "#aa8800", fontSize: "10px", letterSpacing: "0.2em", marginBottom: "4px" }}>HINT (−5 pts)</div>
-          <div style={{ color: "#ffcc00", fontSize: "12px" }}>&gt; {q.hint}</div>
+          <div style={{ color: "var(--c-hint-label)", fontSize: "10px", letterSpacing: "0.2em", marginBottom: "4px" }}>HINT (−5 pts)</div>
+          <div style={{ color: "var(--c-hint-text)", fontSize: "12px" }}>&gt; {q.hint}</div>
         </div>
       )}
 
@@ -151,16 +148,16 @@ export default function QuizScreen({
         <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
           <button onClick={handleSubmit} disabled={selected === null}
             style={{ flex: 1, background: "transparent",
-              border: `1px solid ${selected !== null ? G : "#333"}`,
-              color: selected !== null ? G : "#444",
+              border: `1px solid ${selected !== null ? "var(--c-accent)" : "var(--c-disabled-border)"}`,
+              color: selected !== null ? "var(--c-accent)" : "var(--c-disabled-text)",
               padding: "10px 20px", fontSize: "11px", letterSpacing: "0.2em",
               cursor: selected !== null ? "pointer" : "not-allowed",
-              textShadow: selected !== null ? `0 0 8px ${G}88` : "none",
+              textShadow: selected !== null ? "0 0 8px var(--c-accent-88)" : "none",
               transition: "all 0.15s" }}>▶ SUBMIT ANSWER</button>
           {!hintUsed && (
             <button className="hint-btn" onClick={() => { setHintUsed(true); setShowHint(true); }}
-              style={{ background: "transparent", border: "1px solid rgba(255,204,0,0.5)",
-                color: "#ffcc00", padding: "10px 20px", fontSize: "11px",
+              style={{ background: "transparent", border: "1px solid var(--c-hint-border)",
+                color: "var(--c-hint-text)", padding: "10px 20px", fontSize: "11px",
                 letterSpacing: "0.2em", cursor: "pointer", transition: "all 0.15s" }}>? HINT</button>
           )}
         </div>
@@ -172,8 +169,8 @@ export default function QuizScreen({
           <div className={boxCls} style={{ background: accentBgC,
             border: `1px solid ${borderC}`, borderRadius: "2px", marginBottom: "14px", overflow: "hidden" }}>
             <div style={{ background: correct
-                ? (isBugMode ? "rgba(0,255,136,0.12)" : "rgba(255,170,0,0.12)")
-                : "rgba(255,68,102,0.12)",
+                ? (isBugMode ? "var(--c-correct-bug-bg)" : "var(--c-correct-smell-bg)")
+                : "var(--c-wrong-bg-deep)",
               borderBottom: `1px solid ${borderC}`,
               padding: "18px 20px", display: "flex", alignItems: "center",
               justifyContent: "space-between", gap: "12px" }}>
@@ -186,7 +183,7 @@ export default function QuizScreen({
                     style={{ color: accentC, fontSize: "20px", fontWeight: "bold", letterSpacing: "0.25em" }}>
                     {correct ? "CORRECT!" : "INCORRECT"}
                   </div>
-                  <div style={{ color: correct ? (isBugMode ? "#33cc77" : "#ddaa00") : "#ff5577",
+                  <div style={{ color: correct ? (isBugMode ? "var(--c-correct-bug-sub)" : "var(--c-correct-smell-sub)") : "var(--c-wrong-text)",
                     fontSize: "11px", letterSpacing: "0.15em", marginTop: "2px" }}>
                     {correct
                       ? (isBugMode ? "よく見つけました" : "改善点を見つけました")
@@ -197,25 +194,25 @@ export default function QuizScreen({
               <div style={{ textAlign: "center", border: `1px solid ${borderC}`,
                 padding: "8px 16px", flexShrink: 0, background: accentBgC }}>
                 <div style={{ color: accentC, fontSize: "24px" }}>{correct ? `+${pts}` : "+0"}</div>
-                <div style={{ color: correct ? (isBugMode ? "#33cc77" : "#ddaa00") : "#ff5577",
+                <div style={{ color: correct ? (isBugMode ? "var(--c-correct-bug-sub)" : "var(--c-correct-smell-sub)") : "var(--c-wrong-text)",
                   fontSize: "10px", letterSpacing: "0.2em" }}>pts</div>
               </div>
             </div>
             <div style={{ padding: "14px 20px" }}>
-              <div style={{ color: "#00cc44", fontSize: "11.5px", marginBottom: "8px",
-                fontFamily: "monospace", borderLeft: "2px solid #336633", paddingLeft: "10px" }}>
+              <div style={{ color: "var(--c-verdict-text)", fontSize: "11.5px", marginBottom: "8px",
+                fontFamily: "monospace", borderLeft: "2px solid var(--c-verdict-border)", paddingLeft: "10px" }}>
                 {isBugMode ? "BUG" : "改善点"}: {isBugMode ? q.bugDescription : q.badDescription}
               </div>
-              <div style={{ color: GD, fontSize: "11.5px", lineHeight: "1.75" }}>
+              <div style={{ color: "var(--c-dim)", fontSize: "11.5px", lineHeight: "1.75" }}>
                 {q.explanation}
               </div>
             </div>
           </div>
 
           <button className="action-btn" onClick={handleNext}
-            style={{ width: "100%", background: "transparent", border: `1px solid ${G}`,
-              color: G, padding: "12px", fontSize: "12px", letterSpacing: "0.3em",
-              cursor: "pointer", textShadow: `0 0 8px ${G}88`, transition: "all 0.2s" }}>
+            style={{ width: "100%", background: "transparent", border: "1px solid var(--c-accent)",
+              color: "var(--c-accent)", padding: "12px", fontSize: "12px", letterSpacing: "0.3em",
+              cursor: "pointer", textShadow: "0 0 8px var(--c-accent-88)", transition: "all 0.2s" }}>
             {currentQ + 1 >= questions.length ? "▶ SHOW RESULT" : "▶ NEXT QUESTION"}
           </button>
         </>

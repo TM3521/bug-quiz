@@ -116,32 +116,39 @@ export default function App() {
     setWeaknesses(clearWeaknesses());
   };
 
-  const G  = th.accent;
-  const GD = th.accentDim;
-
   return (
-    <div style={{ minHeight: "100vh", background: "#0a0a0f", display: "flex",
+    <div style={{
+      minHeight: "100vh", background: "var(--c-bg-main)", display: "flex",
       alignItems: "center", justifyContent: "center",
       fontFamily: "'Courier New','Lucida Console',monospace",
-      padding: "20px", position: "relative", overflow: "hidden" }}>
+      padding: "20px", position: "relative", overflow: "hidden",
+      /* Dynamic CSS vars – change with mode */
+      "--c-accent":    th.accent,
+      "--c-dim":       th.accentDim,
+      "--c-accent-bg": th.accentBg,
+      "--c-accent-88": th.accent + "88",
+      "--c-accent-66": th.accent + "66",
+      "--c-accent-14": th.accent + "14",
+      "--c-accent-99": th.accent + "99",
+    }}>
 
       <GlobalStyles />
 
       {/* CRT scan line overlays */}
       <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9999,
-        background: "repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,100,0.012) 2px,rgba(0,255,100,0.012) 4px)" }} />
+        background: "repeating-linear-gradient(0deg,transparent,transparent 2px,var(--c-crt-scan) 2px,var(--c-crt-scan) 4px)" }} />
       <div style={{ position: "fixed", left: 0, right: 0, height: "2px",
-        background: "rgba(0,255,100,0.07)", top: `${scanLine}%`, pointerEvents: "none", zIndex: 9998 }} />
+        background: "var(--c-crt-line)", top: `${scanLine}%`, pointerEvents: "none", zIndex: 9998 }} />
 
       <div style={{ width: "100%", maxWidth: "820px" }}>
-        <div style={{ background: "#0d1a0d", border: `2px solid ${GD}`, borderRadius: "4px",
-          boxShadow: `0 0 40px ${th.accentBg},inset 0 0 80px rgba(0,0,0,0.5)`, overflow: "hidden",
+        <div style={{ background: "var(--c-bg-panel)", border: "2px solid var(--c-dim)", borderRadius: "4px",
+          boxShadow: "0 0 40px var(--c-accent-bg),inset 0 0 80px rgba(0,0,0,0.5)", overflow: "hidden",
           transition: "border-color 0.4s, box-shadow 0.4s" }}>
 
           {/* Title bar */}
-          <div style={{ background: "#0a140a", borderBottom: `1px solid ${GD}`,
+          <div style={{ background: "var(--c-bg-titlebar)", borderBottom: "1px solid var(--c-dim)",
             padding: "8px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <span style={{ color: G, fontSize: "11px", letterSpacing: "0.2em", opacity: 0.7, transition: "color 0.4s" }}>
+            <span style={{ color: "var(--c-accent)", fontSize: "11px", letterSpacing: "0.2em", opacity: 0.7, transition: "color 0.4s" }}>
               VB.NET {th.label} v4.0 ── TERMINAL
             </span>
             <div style={{ display: "flex", gap: "6px" }}>
@@ -152,7 +159,7 @@ export default function App() {
           </div>
 
           {/* Mode switch bar */}
-          <div style={{ display: "flex", borderBottom: `1px solid ${GD}`, background: "#080f08" }}>
+          <div style={{ display: "flex", borderBottom: "1px solid var(--c-dim)", background: "var(--c-bg-modebar)" }}>
             {[
               { key: "bug",   icon: "⚡", label: "BUG HUNT",    desc: "バグを探せ" },
               { key: "smell", icon: "🔧", label: "REFACTORING", desc: "改善点を見つけろ" },
@@ -160,21 +167,13 @@ export default function App() {
               <button key={m.key} onClick={() => handleModeSwitch(m.key)}
                 style={{
                   flex: 1,
-                  background: mode === m.key
-                    ? (m.key === "bug" ? "rgba(0,255,80,0.08)" : "rgba(255,170,0,0.08)")
-                    : "transparent",
-                  border: "none",
-                  borderBottom: mode === m.key
-                    ? `2px solid ${m.key === "bug" ? "#00ff55" : "#ffaa00"}`
-                    : "2px solid transparent",
-                  color: mode === m.key
-                    ? (m.key === "bug" ? "#00ff55" : "#ffaa00")
-                    : "#2a4a2a",
+                  background:   mode === m.key ? (m.key === "bug" ? "var(--c-bug-bg)" : "var(--c-smell-bg)") : "transparent",
+                  border:       "none",
+                  borderBottom: mode === m.key ? `2px solid ${m.key === "bug" ? "var(--c-bug-accent)" : "var(--c-smell-accent)"}` : "2px solid transparent",
+                  color:        mode === m.key ? (m.key === "bug" ? "var(--c-bug-accent)" : "var(--c-smell-accent)") : "var(--c-mode-inactive)",
                   padding: "10px 16px", fontSize: "12px", letterSpacing: "0.2em",
                   cursor: "pointer", marginBottom: "-1px", transition: "all 0.2s",
-                  textShadow: mode === m.key
-                    ? `0 0 10px ${m.key === "bug" ? "rgba(0,255,80,0.5)" : "rgba(255,170,0,0.5)"}`
-                    : "none",
+                  textShadow: mode === m.key ? `0 0 10px ${m.key === "bug" ? "var(--c-bug-glow)" : "var(--c-smell-glow)"}` : "none",
                 }}>
                 <span style={{ marginRight: "8px" }}>{m.icon}</span>{m.label}
                 <span style={{ marginLeft: "8px", fontSize: "10px", opacity: 0.6 }}>{m.desc}</span>
@@ -206,7 +205,7 @@ export default function App() {
             {screen === "result" && (
               <ResultScreen
                 score={score} maxScore={maxScore} answers={answers}
-                th={th} isBugMode={isBugMode} handleRestart={handleRestart}
+                isBugMode={isBugMode} handleRestart={handleRestart}
               />
             )}
           </div>

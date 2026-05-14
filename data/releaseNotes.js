@@ -1,6 +1,10 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.15", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.16", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "IMP", text: "カラー管理を CSS Custom Properties に一元化：全コンポーネントのインライン色指定を CSS 変数（var(--c-*)）に置き換え。GlobalStyles.jsx の :root ブロックと App ルート要素のインライン変数注入のみを編集すれば全体の配色が変わる保守性に改善" }],
+  },
+  {
+    version: "v4.15", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "FIX", text: "UI 全体のコントラスト改善：accentDim カラーを #1a4a1a → #4a8a4a に変更（コントラスト比 1.75:1 → 4.37:1）。リリースノート・説明文・行番号など暗すぎたテキストを読みやすく修正" }],
   },
   {
@@ -93,7 +97,11 @@ export const bugReleaseNotes = [
 
 export const smellReleaseNotes = [
   {
-    version: "v4.7", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.8", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "IMP", text: "カラー管理を CSS Custom Properties に一元化：全コンポーネントのインライン色指定を CSS 変数（var(--c-*)）に置き換え。GlobalStyles.jsx の :root ブロックと App ルート要素のインライン変数注入のみを編集すれば全体の配色が変わる保守性に改善" }],
+  },
+  {
+    version: "v4.7", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "FIX", text: "UI 全体のコントラスト改善：accentDim カラーを #4a3a00 → #997700 に変更（コントラスト比 1.75:1 → 4.37:1）。タブ・ラベル・説明文など暗すぎたテキストを読みやすく修正" }],
   },
   {

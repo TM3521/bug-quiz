@@ -1,7 +1,4 @@
-export default function ResultScreen({ score, maxScore, answers, th, isBugMode, handleRestart }) {
-  const G  = th.accent;
-  const GD = th.accentDim;
-
+export default function ResultScreen({ score, maxScore, answers, isBugMode, handleRestart }) {
   const getRank = (s) => {
     const p = s / maxScore;
     if (p >= 0.9) return isBugMode ? "S  ── MASTER DEBUGGER"   : "S  ── REFACTORING GURU";
@@ -19,38 +16,38 @@ export default function ResultScreen({ score, maxScore, answers, th, isBugMode, 
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div style={{ color: GD, fontSize: "11px", letterSpacing: "0.2em", marginBottom: "12px" }}>
+      <div style={{ color: "var(--c-dim)", fontSize: "11px", letterSpacing: "0.2em", marginBottom: "12px" }}>
         ── MISSION COMPLETE ──
       </div>
-      <div style={{ color: G, fontSize: "20px", letterSpacing: "0.2em",
-        textShadow: `0 0 20px ${G}66`, marginBottom: "8px" }}>FINAL RESULT</div>
-      <div style={{ color: G, fontSize: "52px", textShadow: `0 0 30px ${G}88`,
+      <div style={{ color: "var(--c-accent)", fontSize: "20px", letterSpacing: "0.2em",
+        textShadow: "0 0 20px var(--c-accent-66)", marginBottom: "8px" }}>FINAL RESULT</div>
+      <div style={{ color: "var(--c-accent)", fontSize: "52px", textShadow: "0 0 30px var(--c-accent-88)",
         lineHeight: 1, marginBottom: "4px" }}>{score}</div>
-      <div style={{ color: GD, fontSize: "13px", marginBottom: "28px" }}>/ {maxScore} pts</div>
+      <div style={{ color: "var(--c-dim)", fontSize: "13px", marginBottom: "28px" }}>/ {maxScore} pts</div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", marginBottom: "24px" }}>
         {stats.map(s => (
-          <div key={s.lbl} style={{ border: `1px solid ${GD}`, padding: "14px 10px", background: th.accentBg }}>
-            <div style={{ color: G, fontSize: "24px", textShadow: `0 0 10px ${G}66` }}>{s.val}</div>
-            <div style={{ color: GD, fontSize: "10px", letterSpacing: "0.15em", marginTop: "4px" }}>{s.lbl}</div>
+          <div key={s.lbl} style={{ border: "1px solid var(--c-dim)", padding: "14px 10px", background: "var(--c-accent-bg)" }}>
+            <div style={{ color: "var(--c-accent)", fontSize: "24px", textShadow: "0 0 10px var(--c-accent-66)" }}>{s.val}</div>
+            <div style={{ color: "var(--c-dim)", fontSize: "10px", letterSpacing: "0.15em", marginTop: "4px" }}>{s.lbl}</div>
           </div>
         ))}
       </div>
 
-      <div style={{ border: `1px solid ${GD}`, padding: "16px", marginBottom: "12px", background: th.accentBg }}>
-        <div style={{ color: GD, fontSize: "10px", letterSpacing: "0.2em", marginBottom: "8px" }}>YOUR RANK</div>
-        <div style={{ color: G, fontSize: "22px", letterSpacing: "0.1em",
-          textShadow: `0 0 15px ${G}66` }}>{getRank(score)}</div>
+      <div style={{ border: "1px solid var(--c-dim)", padding: "16px", marginBottom: "12px", background: "var(--c-accent-bg)" }}>
+        <div style={{ color: "var(--c-dim)", fontSize: "10px", letterSpacing: "0.2em", marginBottom: "8px" }}>YOUR RANK</div>
+        <div style={{ color: "var(--c-accent)", fontSize: "22px", letterSpacing: "0.1em",
+          textShadow: "0 0 15px var(--c-accent-66)" }}>{getRank(score)}</div>
       </div>
 
-      <div style={{ color: GD, fontSize: "11px", marginBottom: "20px", letterSpacing: "0.1em" }}>
+      <div style={{ color: "var(--c-dim)", fontSize: "11px", marginBottom: "20px", letterSpacing: "0.1em" }}>
         次回は別の問題が出題されます
       </div>
 
       <button className="action-btn" onClick={handleRestart}
-        style={{ width: "100%", background: "transparent", border: `1px solid ${G}`, color: G,
+        style={{ width: "100%", background: "transparent", border: "1px solid var(--c-accent)", color: "var(--c-accent)",
           padding: "12px", fontSize: "12px", letterSpacing: "0.3em",
-          cursor: "pointer", textShadow: `0 0 8px ${G}88`, transition: "all 0.2s" }}>
+          cursor: "pointer", textShadow: "0 0 8px var(--c-accent-88)", transition: "all 0.2s" }}>
         ▶ PLAY AGAIN
       </button>
     </div>
