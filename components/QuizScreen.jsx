@@ -1,4 +1,5 @@
-import { BUG_QUESTIONS, SMELL_QUESTIONS } from "../data/bugQuestions";
+import { BUG_QUESTIONS } from "../data/bugQuestions";
+import { SMELL_QUESTIONS } from "../data/smellQuestions";
 import { difficultyColor } from "../constants/theme";
 
 export default function QuizScreen({
