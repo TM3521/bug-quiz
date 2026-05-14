@@ -97,6 +97,6 @@ BUG HUNT は緑系（`#00ff55`）、REFACTORING は黄橙系（`#ffaa00`）。
 
 アプリを修正した場合は、必ず以下を行う：
 
-1. **リリースノートを更新する** — `data/releaseNotes.js` の `bugReleaseNotes`（BUG HUNT）/ `smellReleaseNotes`（REFACTORING）に指示1件ごとに追記する。BUG HUNT の変更は `bugReleaseNotes`、REFACTORING の変更は `smellReleaseNotes`、両モード共通の変更は両方に記載する。既存の LATEST バージョンに追記するか、バージョンを上げて新エントリを作成する。type は `NEW`（新機能）/ `FIX`（バグ修正）/ `IMP`（改善）のいずれかを使う。
+1. **リリースノートを更新する** — 指示1件につき1バージョンエントリを `data/releaseNotes.js` に追加する。変更を1つの `changes` 配列にまとめず、必ず独立したエントリとして先頭に追記する。BUG HUNT の変更は `bugReleaseNotes`、REFACTORING の変更は `smellReleaseNotes`、両モード共通の変更は両方に追記する。バージョン番号は直前のエントリの次の番号を使う。type は `NEW`（新機能）/ `FIX`（バグ修正）/ `IMP`（改善）のいずれかを使う。
 2. **CLAUDE.md を更新する** — 変更内容（新機能・仕様変更・ファイル構成の変化など）をこのファイルに反映する
 3. **GitHub にコミット・プッシュする** — 修正内容を `main` ブランチに push することで GitHub Actions が自動デプロイを実行する
