@@ -1,6 +1,10 @@
 export const bugReleaseNotes = [
   {
-    version: "v4.17", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.18", date: "2026-06-10", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "NEW", text: "BUG HUNT 問題を 30問 → 40問に増加（EASY +3 / NORMAL +4 / HARD +3）。新カテゴリ：コレクション（Dictionary・LINQ）。追加問題：Exit For位置ミス・ループ内リセット・空白比較・Keyチェック漏れ・Split未使用・銀行丸め・IIf両辺評価・2次元配列次元誤解・First例外・年齢計算" }],
+  },
+  {
+    version: "v4.17", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "FIX", text: "スマホ表示でモード切り替えボタン「BUG HUNT バグを探せ」が途中改行されていた問題を修正（white-space: nowrap を追加）" }],
   },
   {
@@ -101,7 +105,11 @@ export const bugReleaseNotes = [
 
 export const smellReleaseNotes = [
   {
-    version: "v4.9", date: "2026-05-15", tag: "LATEST", tagColor: "#00ff88",
+    version: "v4.10", date: "2026-06-10", tag: "LATEST", tagColor: "#00ff88",
+    changes: [{ type: "NEW", text: "REFACTORING 問題を 15問 → 25問に増加。新カテゴリ：列挙型・リソース管理。追加問題：マジックストリング・例外を制御フローに使う・副作用Getter・出力引数・Primitive Obsession・条件重複・Dispose未解放・到達不能コード・ネストIF合体・PublicフィールドのCQS違反" }],
+  },
+  {
+    version: "v4.9", date: "2026-05-15", tag: "", tagColor: "",
     changes: [{ type: "FIX", text: "スマホ表示でモード切り替えボタン「REFACTORING 改善点を見つけろ」が途中改行されていた問題を修正（white-space: nowrap を追加）" }],
   },
   {
